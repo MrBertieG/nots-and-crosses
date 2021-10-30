@@ -58,12 +58,16 @@ def bounds(user_input):
         return True
 
 
-def not_available(user_input):
+def not_available(coords):
 
 def coordinates():
     #This assignemt establishes the position on the board. 
     #If the position is between 0 and 2, if divided by 3 it will always be 0
     row = int(user_input / 3)
+    #Finding the remainder of / 3
+    col = user_input
+    if col > 2: col = int(col % 3)
+    return(row, col)
 
 
 while True:
@@ -76,3 +80,4 @@ while True:
         continue
     #Converts the position on the board as the list goes from 0 to 8
     user_input = int(user_input) - 1
+    coords = coordinates(user_input)
