@@ -58,7 +58,14 @@ def bounds(user_input):
         return True
 
 
-def not_available(coords):
+def not_available(coords, board):
+    row = coords[0]
+    col = coords[1]
+    if board[row][col] != "-":
+        print("This position is already taken.")
+        return True
+    else:
+        return False
 
 def coordinates():
     #This assignemt establishes the position on the board. 
@@ -66,7 +73,8 @@ def coordinates():
     row = int(user_input / 3)
     #Finding the remainder of / 3
     col = user_input
-    if col > 2: col = int(col % 3)
+    if col > 2: 
+        col = int(col % 3)
     return(row, col)
 
 
