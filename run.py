@@ -99,12 +99,15 @@ def current_user(user):
         return "o"
 
 
-def iswin(user, board):
-    if checkrow(USER, board):
+def iswin(USER, board):
+    if check_row(USER, board):
+        return True
+    if check_col(USER, board):
         return True
 
 
-def check_row(user, board):
+# Function defines if user won in a row
+def check_row(USER, board):
     for row in board:
         complete_row = True
         for slot in row:
@@ -113,6 +116,26 @@ def check_row(user, board):
                 break
         if complete_row:
             return True
+    return False
+
+
+# function defines if user won in a column
+def check_col(USER, board):
+    for col in range(3):
+        complete_col = True
+        for row in range(3):
+            if board[row][col] != USER:
+                complete_col = False
+                break
+        if complete_col:
+            return True
+
+
+def check_diag(USER, board):
+    if board[0][0] == USER and board[1][1] == USER and board[2][2] == USER:
+        return True
+    elif board[0][2] == USER and board[1][1] == USER and board[2][0] == USER:
+        return True
 
 
 while True:
@@ -124,14 +147,16 @@ while True:
     if not check_input(user_input):
         print("Try again")
         continue
-    #Converts the position on the board as the list goes from 0 to 8
+    # Converts the position on the board as the list goes from 0 to 8
     user_input = int(user_input) - 1
     coords = coordinates(user_input)
     if not_available(coords, board):
         print("Position is already taken, please try again.")
         continue
     add_to_board(coords, board, active_user)
-    
+    if iswin(active_user, board):
+        print(f"{active_user.upper()} won!")
+        break
 
 
     USER = not USER
