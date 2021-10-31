@@ -98,11 +98,13 @@ def current_user(user):
     else:
         return "o"
 
-
+# Function checks if the user
 def iswin(USER, board):
     if check_row(USER, board):
         return True
     if check_col(USER, board):
+        return True
+    if check_diag(USER, board):
         return True
 
 
@@ -119,7 +121,7 @@ def check_row(USER, board):
     return False
 
 
-# function defines if user won in a column
+# Function defines if user won in a column
 def check_col(USER, board):
     for col in range(3):
         complete_col = True
@@ -131,6 +133,7 @@ def check_col(USER, board):
             return True
 
 
+# Function defines is the user has won diagonally 
 def check_diag(USER, board):
     if board[0][0] == USER and board[1][1] == USER and board[2][2] == USER:
         return True
@@ -138,7 +141,7 @@ def check_diag(USER, board):
         return True
 
 
-while True:
+while TURNS < 9:
     active_user = current_user(USER)
     print_board(board)
     user_input = input("Please enter a position 1 through 9 or enter 'q' to quit:")
@@ -158,5 +161,7 @@ while True:
         print(f"{active_user.upper()} won!")
         break
 
-
+    TURNS += 1
+    if TURNS == 9:
+        print("Tie!")
     USER = not USER
