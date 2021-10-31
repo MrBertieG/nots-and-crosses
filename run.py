@@ -6,6 +6,8 @@ board = [
     ["-", "-", "-"]
 ]
 
+user = True 
+turns = 0
 
 def print_board(board):
     """
@@ -57,7 +59,7 @@ def bounds(user_input):
     else: 
         return True
 
-
+#Function checks if the slot on the board has been already taken
 def not_available(coords, board):
     row = coords[0]
     col = coords[1]
@@ -67,7 +69,7 @@ def not_available(coords, board):
     else:
         return False
 
-def coordinates():
+def coordinates(user_input):
     #This assignemt establishes the position on the board. 
     #If the position is between 0 and 2, if divided by 3 it will always be 0
     row = int(user_input / 3)
@@ -76,6 +78,19 @@ def coordinates():
     if col > 2: 
         col = int(col % 3)
     return(row, col)
+
+
+def add_to_board(coords, board):
+    row = coords[0]
+    col = coords[1]
+    board[row][col] = ""
+
+
+def current_user(user):
+    if user:
+        return "x"
+    else:
+        return "o"
 
 
 while True:
@@ -89,3 +104,6 @@ while True:
     #Converts the position on the board as the list goes from 0 to 8
     user_input = int(user_input) - 1
     coords = coordinates(user_input)
+    if not_available(coords, board):
+        print("Position is already taken, please try again.")
+        continue
