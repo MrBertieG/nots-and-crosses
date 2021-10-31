@@ -99,6 +99,22 @@ def current_user(user):
         return "o"
 
 
+def iswin(user, board):
+    if checkrow(USER, board):
+        return True
+
+
+def check_row(user, board):
+    for row in board:
+        complete_row = True
+        for slot in row:
+            if slot != USER:
+                complete_row = False
+                break
+        if complete_row:
+            return True
+
+
 while True:
     active_user = current_user(USER)
     print_board(board)
@@ -115,4 +131,7 @@ while True:
         print("Position is already taken, please try again.")
         continue
     add_to_board(coords, board, active_user)
+    
+
+
     USER = not USER
