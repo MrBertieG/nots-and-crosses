@@ -117,6 +117,8 @@ def check_row(USER, board):
                 complete_row = False
                 break
         if complete_row:
+            print_board(board)
+            print()
             return True
     return False
 
@@ -140,7 +142,7 @@ def check_diag(USER, board):
     elif board[0][2] == USER and board[1][1] == USER and board[2][0] == USER:
         return True
 
-
+# This loop establishes how many turns have taken place and runns each time until the user wins or the maximum count of runs is 9.
 while TURNS < 9:
     active_user = current_user(USER)
     print_board(board)
