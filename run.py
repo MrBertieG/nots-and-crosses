@@ -98,6 +98,7 @@ def current_user(user):
     else:
         return "o"
 
+
 # Function checks if the user
 def iswin(USER, board):
     if check_row(USER, board):
@@ -132,14 +133,20 @@ def check_col(USER, board):
                 complete_col = False
                 break
         if complete_col:
+            print_board(board)
+            print()
             return True
 
 
 # Function defines is the user has won diagonally 
 def check_diag(USER, board):
     if board[0][0] == USER and board[1][1] == USER and board[2][2] == USER:
+        print_board(board)
+        print()
         return True
     elif board[0][2] == USER and board[1][1] == USER and board[2][0] == USER:
+        print_board(board)
+        print()
         return True
 
 # This loop establishes how many turns have taken place and runns each time until the user wins or the maximum count of runs is 9.
