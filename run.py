@@ -27,6 +27,7 @@ TURNS = 0
 
 
 # Prints the board on the terminal
+
 def print_board(board):
     for row in board:
         for slot in row:
@@ -169,9 +170,10 @@ def check_diag(USER, board):
 # This loop establishes how many turns have taken place and runns each time until the user wins or the maximum count of runs is 9.
 while TURNS < 9:
     active_user = current_user(USER)
+    print("")
     print_board(board)
 
-    user_input = input("Please enter a position 1 through 9 or enter 'q' to quit:")
+    user_input = input("Please enter a position 1 through 9 or enter 'Q' to exit: ")
     if quit(user_input):
         break
     if not check_input(user_input):
