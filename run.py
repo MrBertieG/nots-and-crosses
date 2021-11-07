@@ -112,6 +112,15 @@ def check_input(user_input):
     return True
 
 
+
+def selectRandom(li):
+    import random
+    ln = len(li)
+    r = random.randrange(0,ln)
+    return li[r]
+
+
+
 # Function will establish if the input is a number 
 def isnum(user_input):
 
