@@ -44,21 +44,22 @@ def isWinner(bo, le):
 def playerMove():
     run = True
     while run:
-        move = input('Choose your next move wisely HUMAN (1-9): ')
-        try:
+        move = input('Please select a position to place an \'X\' (1-9): ')
+        if move == 'q':
+            exit()
+        else:
             move = int(move)
-            if move > 0 and move < 10:
-                if spaceIsFree(move):
-                    run = False
-                    insertLetter('X', move)
+            try:
+                if move > 0 and move < 10:
+                    if spaceIsFree(move):
+                        run = False
+                        insertLetter('X', move)
+                    else:
+                        print('Sorry, this space is occupied!')
                 else:
-                    print('Place is taken, try again')
-            else:
-                
-                print('Numbers 1 to 9 only!')
-        except:
-            move == 'q'
-            print('Numbers only, (1 - 9)')
+                    print('Please type a number within the range!')
+            except:
+                print('Please type a number!')
 
 
 def compMove():
@@ -74,15 +75,28 @@ def compMove():
                 return move
 
 
-# This is the Quit function where the user can exit by pressing 'q'
-def quit(user_input):
+    cornersOpen = []
+    for i in possibleMoves:
+        if i in [1,3,7,9]:
+            cornersOpen.append(i)
+            
+    if len(cornersOpen) > 0:
+        move = selectRandom(cornersOpen)
+        return move
 
-    if user_input.lower() == "q":
-        print('Thanks for playing')
-        return True
-    else:
-        return False
+    if 5 in possibleMoves:
+        move = 5
+        return move
 
+    edgesOpen = []
+    for i in possibleMoves:
+        if i in [2,4,6,8]:
+            edgesOpen.append(i)
+            
+    if len(edgesOpen) > 0:
+        move = selectRandom(edgesOpen)
+        
+    return move
 
 # The function will check if the input is a integer number
 def check_input(user_input):
