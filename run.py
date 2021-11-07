@@ -10,33 +10,38 @@
 
 import random
 
+# Creates a board with 10 empty values
 board = [' ' for x in range(10)]
 
 
+# Demonstration Board displayes as an intro
 def demoBoard():
     print(' ')
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print('   |   | ')
+    print(' 1 | 2 | 3')
     print('   |   |')
     print('-----------')
     print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
+    print(' 4 | 5 | 6')
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' 7 | 8 | 9')
     print('   |   |')
     print(' ')
 
 
+# This allows to insert any letters in any given position
 def insertLetter(letter, pos):
     board[pos] = letter
 
 
+# Checks if the space is availabe to use. If not equal to empty it will return False
 def spaceIsFree(pos):
     return board[pos] == ' '
 
 
+# Main board printed each time a player enters a letter. The board contains spaces from 1 to 9, with no 0
 def printBoard(board):
     print(' ')
     print('   |   |')
@@ -52,7 +57,9 @@ def printBoard(board):
     print('   |   |')
     print(' ')
 
-    
+
+# Establishes the winning combimnations on the board. It akes the two parameters bo(board) and le(letter)
+# and it will go through each combinatiomn
 def isWinner(bo, le):
     return ((bo[7] == le and bo[8] == le and bo[9] == le) or 
     (bo[4] == le and bo[5] == le and bo[6] == le) or
@@ -64,6 +71,9 @@ def isWinner(bo, le):
     (bo[3] == le and bo[5] == le and bo[7] == le))
 
 
+# Thie player's move input. If the player's choce is within the parameters 1 - 9 & the space is available
+# it will insert it on the board.
+# If the player inoputs 'Q' the game will terminate
 def playerMove():
     run = True
     while run:
@@ -100,7 +110,7 @@ def compMove():
 
     cornersOpen = []
     for i in possibleMoves:
-        if i in [1,3,7,9]:
+        if i in [1, 3, 7, 9]:
             cornersOpen.append(i)
             
     if len(cornersOpen) > 0:
@@ -113,7 +123,7 @@ def compMove():
 
     edgesOpen = []
     for i in possibleMoves:
-        if i in [2,4,6,8]:
+        if i in [2, 4, 6, 8]:
             edgesOpen.append(i)
             
     if len(edgesOpen) > 0:
@@ -121,24 +131,11 @@ def compMove():
         
     return move
 
-# The function will check if the input is a integer number
-def check_input(user_input):
-
-    if not isnum(user_input):
-        return False
-
-    user_input = int(user_input)
-
-    if not bounds(user_input):
-        return False
-
-    return True
-
 
 def selectRandom(li):
     import random
     ln = len(li)
-    r = random.randrange(0,ln)
+    r = random.randrange(0, ln)
     return li[r]
 
 
@@ -151,17 +148,15 @@ def isBoardFull(board):
 
 gamePlay = True
 
-def main():
-    print('Welcome to Tic Tac Toe!')
-    printBoard(board)
 
+def main():
     if random.randint(0, 1) == 0:
         while not(isBoardFull(board)):
             if not(isWinner(board, 'O')):
                 playerMove()
                 printBoard(board)
             else:
-                print('Sorry, O\'s won this time!')
+                print('BOT is the winner, you LOOSE!')
                 break
 
             if not(isWinner(board, 'X')):
@@ -170,139 +165,56 @@ def main():
                     print('Tie Game!')
                 else:
                     insertLetter('O', move)
-                    print('Computer placed an \'O\' in position', move , ':')
+                    print('BOT placed an \'O\' in position', move , ':')
                     printBoard(board)
             else:
-                print('X\'s won this time! Good Job!')
+                print('You win HUMAN!')
                 break
+        if isBoardFull(board):
+            print('Game is a tie! No more spaces left to move.')
+
     else:
         while not(isBoardFull(board)):
             if not(isWinner(board, 'X')):
                 move = compMove()
                 if move == 0:
                     print('Tie Game!')
+                    break
                 else:
                     insertLetter('O', move)
-                    print('Computer placed an \'O\' in position', move , ':')
+                    print('BOT placed an \'O\' in position', move , ':')
                     printBoard(board)
             else:
-                print('X\'s won this time! Good Job!')
+                print('You win HUMAN!')
                 break
 
             if not(isWinner(board, 'O')):
                 playerMove()
                 printBoard(board)
             else:
-                print('Sorry, O\'s won this time!')
+                print('BOT is the winner, you LOOSE!')
                 break
+        
 
 
+print('')
+print('BOT: Welcome HUMAN, do you dare to challenge me to a deadly game of Noughts and Crosses aka Tic Tac Toe?')
+print('')
+print('BOT: We will let the universe decide who starts, brace yourself HUMAN!')
+print('')
+begin = input('Start the game? (y/n): ')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Takes the user input and takes the board as the parameter. it adds the coordinates it havs and check if anything is there. 
-def add_to_board(coords, board, active_user):
-
-    row = coords[0]
-    col = coords[1]
-    board[row][col] = active_user
-
-
-def current_user(user):
-    if user:
-        return "x"
+while gamePlay:
+    demoBoard()
+    if begin.lower() == 'y':
+        main()
     else:
-        return "o"
-
-
-# Function checks if the user
-def iswin(USER, board):
-    if check_row(USER, board):
-        return True
-    if check_col(USER, board):
-        return True
-    if check_diag(USER, board):
-        return True
-
-
-# Function defines if user won in a row
-def check_row(USER, board):
-    for row in board:
-        complete_row = True
-        for slot in row:
-            if slot != USER:
-                complete_row = False
-                break
-        if complete_row:
-            print_board(board)
-            print()
-            return True
-    return False
-
-
-# Function defines if user won in a column
-def check_col(USER, board):
-    for col in range(3):
-        complete_col = True
-        for row in range(3):
-            if board[row][col] != USER:
-                complete_col = False
-                break
-        if complete_col:
-            print_board(board)
-            print()
-            return True
-
-
-# Function defines is the user has won diagonally 
-def check_diag(USER, board):
-    if board[0][0] == USER and board[1][1] == USER and board[2][2] == USER:
-        print_board(board)
-        print()
-        return True
-    elif board[0][2] == USER and board[1][1] == USER and board[2][0] == USER:
-        print_board(board)
-        print()
-        return True
-
-
-# This loop establishes how many turns have taken place and runns each time until the user wins or the maximum count of runs is 9.
-while TURNS < 9:
-    active_user = current_user(USER)
-    print("")
-    print_board(board)
-
-    user_input = input("Please enter a position 1 through 9 or enter 'Q' to exit: ")
-    if quit(user_input):
-        break
-    if not check_input(user_input):
-        print("Try again")
-        continue
-    # Converts the position on the board as the list goes from 0 to 8
-    user_input = int(user_input) - 1
-    coords = coordinates(user_input)
-    if not_available(coords, board):
-        print("Position is already taken, please try again.")
-        continue
-    add_to_board(coords, board, active_user)
-    if iswin(active_user, board):
-        print(f"{active_user.upper()} won!")
         break
 
-    TURNS += 1
-    if TURNS == 9:
-        print("Tie!")
-    USER = not USER
+    answer = input('Do you want to play again? (Y/N): ')
+    if answer.lower() == 'y' or answer.lower == 'yes':
+        board = [' ' for x in range(10)]
+        print('-----------------------------------')
+        main()
+    else:
+        break
