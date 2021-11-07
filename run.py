@@ -1,8 +1,9 @@
 # Noughts and Crosses Game or aka Tic Tac Toe.
 # The gamne is played between a Player(HUMAN) and the Computer(BOT).
 # The start of the game is established randomly.
-# The computer will always check if any of the corners are free. 
-# As you might know, the easiest way to win at the game is to capture the corners.
+# The computer will always check if any of the corners are free.
+# As you might know, the easiest way to win at the game
+# is to capture the corners.
 # The computer will randomly select the corners or thew center if no corners are free.
 # The computer will try and block any potential wins for the player.
 # If the board gets filled and no one wins, the programm will return TIE.
@@ -32,8 +33,10 @@ def demoBoard():
     print(' ')
 
 
-# This allows to insert any letters in any given position
 def insertLetter(letter, pos):
+    """
+    Method allows to insert any letters into any given positions.
+    """
     board[pos] = letter
 
 
@@ -62,6 +65,12 @@ def printBoard(board):
 # Establishes the winning combimnations on the board. It akes the two parameters bo(board) and le(letter)
 # and it will go through each combinatiomn
 def isWinner(bo, le):
+    # # Check row 1 for a match
+    # if (
+    #   board[1] == letter and board[2] == letter and
+    #   board[3] == letter
+    # ):
+    #     return True
     return ((bo[7] == le and bo[8] == le and bo[9] == le) or
     (bo[4] == le and bo[5] == le and bo[6] == le) or
     (bo[1] == le and bo[2] == le and bo[3] == le) or
@@ -159,6 +168,19 @@ def isBoardFull(board):
 
 gamePlay = True
 
+def compStart():
+    if not(isWinner(board, 'X')):
+        move = compMove()
+        if move == 0:
+            print('Tie Game!')
+            break
+        else:
+            insertLetter('O', move)
+            print('BOT placed an \'O\' in position', move , ':')
+            printBoard(board)
+    else:
+        print('You win HUMAN!')
+        break
 
 # This is the main body of the functioning game. 
 def main():
@@ -171,37 +193,15 @@ def main():
                 print('BOT is the winner, you LOOSE!')
                 break
 
-            if not(isWinner(board, 'X')):
-                move = compMove()
-                if move == 0:
-                    print('Tie Game!')
-                else:
-                    insertLetter('O', move)
-                    print('BOT placed an \'O\' in position', move , ':')
-                    printBoard(board)
-            else:
-                print('You win HUMAN!')
-                break
+            compStart()
 
     else:
         while not(isBoardFull(board)):  # Thisis the 'Computer starts first Option' 
-            if not(isWinner(board, 'X')):
-                move = compMove()
-                if move == 0:
-                    print('Tie Game!')
-                    break
-                else:
-                    insertLetter('O', move)
-                    print('BOT placed an \'O\' in position', move , ':')
-                    printBoard(board)
-            else:
-                print('You win HUMAN!')
-                break
+            compStart()
 
             if not(isWinner(board, 'O')):
                 if isBoardFull(board):
                     print('Tie Game!')
-                    break
                 else:
                     playerMove()
                     printBoard(board)
@@ -210,13 +210,18 @@ def main():
                 break
 
 
+introduction_message = """
+BOT: Welcome HUMAN, do you dare to challenge me to a deadly
+game of Noughts and Crosses aka Tic Tac Toe?
 
-print('')
-print('BOT: Welcome HUMAN, do you dare to challenge me to a deadly game of Noughts and Crosses aka Tic Tac Toe?')
-print('')
-print(' We will battle with X and O. Whoever can get 3 in a row, column or diagonal Wins!')
-print('BOT: We will let the universe decide who starts first, brace yourself HUMAN!')
-print('')
+We will battle with X and O. Whoever can get 3 in a row,
+column or diagonal Wins!
+
+BOT: We will let the universe decide who starts first,
+brace yourself HUMAN!
+
+"""
+print(introduction_message)
 demoBoard()
 
 
