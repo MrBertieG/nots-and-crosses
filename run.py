@@ -61,7 +61,7 @@ def printBoard(board):
 # Establishes the winning combimnations on the board. It akes the two parameters bo(board) and le(letter)
 # and it will go through each combinatiomn
 def isWinner(bo, le):
-    return ((bo[7] == le and bo[8] == le and bo[9] == le) or 
+    return ((bo[7] == le and bo[8] == le and bo[9] == le) or
     (bo[4] == le and bo[5] == le and bo[6] == le) or
     (bo[1] == le and bo[2] == le and bo[3] == le) or
     (bo[1] == le and bo[4] == le and bo[7] == le) or
@@ -80,25 +80,27 @@ def playerMove():
         move = input('Place your \'X\' HUMAN (1-9) or press \'Q\' to give up : ')
         try:
             move = int(move)
-            if move > 0 and move < 10:
-                if spaceIsFree(move):
+            if move > 0 and move < 10:  # If the position is between the parameters the code will continue
+                if spaceIsFree(move):  # Checks to see if the position sellected is avalable
                     run = False
                     insertLetter('X', move)
                 else:
                     print('Place is taken HUMAN')
             else:
-                print('Numbers 1 - 9 only')
+                print('Numbers 1 - 9 only') # If the number is out of parameter it will return False and print the message
         except:
-            if move == 'q':
+            if move == 'q':  # pressing Q will terminate the game
                 quit()
             else:
                 print('Please type a number!')
 
 
+# This is the AI where it checks for possible free corners
 def compMove():
-    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
+    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]  # Creates a list of possible moves
     move = 0
-
+    # The for loop will iterate over the board parameter, 
+    # appending a copy of the string values in the original board to the duplicate board.
     for let in ['O', 'X']:
         for i in possibleMoves:
             boardCopy = board[:]
@@ -106,32 +108,38 @@ def compMove():
             if isWinner(boardCopy, let):
                 move = i
                 return move
-
-
+    
+    # Checks to see if the corners are open
     cornersOpen = []
     for i in possibleMoves:
         if i in [1, 3, 7, 9]:
             cornersOpen.append(i)
-            
+
+    # If one or more corners are open then it will randomly select one      
     if len(cornersOpen) > 0:
         move = selectRandom(cornersOpen)
         return move
 
+    # This is the center of the board, 
+    # another advantage in the game
     if 5 in possibleMoves:
         move = 5
         return move
 
+    # Looks for the middle of the 4 edges
     edgesOpen = []
     for i in possibleMoves:
         if i in [2, 4, 6, 8]:
             edgesOpen.append(i)
-            
+
+    # If any edges are open it will randomly select one        
     if len(edgesOpen) > 0:
         move = selectRandom(edgesOpen)
         
     return move
 
-
+# Random Function will select a position randomly,
+# based on the availability
 def selectRandom(li):
     ln = len(li)
     r = random.randrange(0, ln)
