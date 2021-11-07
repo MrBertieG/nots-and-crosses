@@ -112,7 +112,6 @@ def check_input(user_input):
     return True
 
 
-
 def selectRandom(li):
     import random
     ln = len(li)
@@ -121,35 +120,6 @@ def selectRandom(li):
 
 
 
-# Function will establish if the input is a number 
-def isnum(user_input):
-
-    if not user_input.isnumeric():
-        print("Not a valid number")
-        return False
-    else:
-        return True
-
-
-# Function establishes if the user input falls within the range of 1 and 9
-def bounds(user_input):
-
-    if user_input > 9 or user_input < 1:
-        print("This number is out of range, please enter a number between 1 and 9")
-        return False
-    else:
-        return True
-
-
-# Function checks if the slot on the board has been already taken
-def not_available(coords, board):
-    row = coords[0]
-    col = coords[1]
-    if board[row][col] != "-":
-        print("This position is already taken.")
-        return True
-    else:
-        return False
 
 
 def coordinates(user_input):
