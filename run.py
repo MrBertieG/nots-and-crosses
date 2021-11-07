@@ -133,7 +133,6 @@ def compMove():
 
 
 def selectRandom(li):
-    import random
     ln = len(li)
     r = random.randrange(0, ln)
     return li[r]
@@ -170,8 +169,6 @@ def main():
             else:
                 print('You win HUMAN!')
                 break
-        if isBoardFull(board):
-            print('Game is a tie! No more spaces left to move.')
 
     else:
         while not(isBoardFull(board)):
@@ -189,12 +186,16 @@ def main():
                 break
 
             if not(isWinner(board, 'O')):
-                playerMove()
-                printBoard(board)
+                if isBoardFull(board):
+                    break
+                else:
+                    playerMove()
+                    printBoard(board)
             else:
                 print('BOT is the winner, you LOOSE!')
                 break
-        
+        if isBoardFull(board):
+            print('Game is a tie! No more spaces left to move.')
 
 
 print('')
