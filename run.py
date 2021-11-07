@@ -41,6 +41,25 @@ def isWinner(bo, le):
     (bo[3] == le and bo[5] == le and bo[7] == le))
 
 
+def playerMove():
+    run = True
+    while run:
+        move = input('Choose your next move wisely HUMAN (1-9): ')
+        try:
+            move = int(move)
+            if move > 0 and move < 10:
+                if spaceIsFree(move):
+                    run = False
+                    insertLetter('X', move)
+                else:
+                    print('Place is taken, try again')
+            else:
+                
+                print('Numbers 1 to 9 only!')
+        except:
+            move == 'q'
+            print('Numbers only, (1 - 9)')
+
 
 # This is the Quit function where the user can exit by pressing 'q'
 def quit(user_input):
