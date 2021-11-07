@@ -78,20 +78,20 @@ def playerMove():
     run = True
     while run:
         move = input('Place your \'X\' HUMAN (1-9) or press \'Q\' to give up : ')
-        if move == 'q':
-            exit()
-        else:
+        try:
             move = int(move)
-            try:
-                if move > 0 and move < 10:
-                    if spaceIsFree(move):
-                        run = False
-                        insertLetter('X', move)
-                    else:
-                        print('Place is taken HUMAN')
+            if move > 0 and move < 10:
+                if spaceIsFree(move):
+                    run = False
+                    insertLetter('X', move)
                 else:
-                    print('Numbers 1 - 9 only')
-            except:
+                    print('Place is taken HUMAN')
+            else:
+                print('Numbers 1 - 9 only')
+        except:
+            if move == 'q':
+                quit()
+            else:
                 print('Please type a number!')
 
 
@@ -187,6 +187,7 @@ def main():
 
             if not(isWinner(board, 'O')):
                 if isBoardFull(board):
+                    print('Tie Game!')
                     break
                 else:
                     playerMove()
@@ -194,8 +195,7 @@ def main():
             else:
                 print('BOT is the winner, you LOOSE!')
                 break
-        if isBoardFull(board):
-            print('Game is a tie! No more spaces left to move.')
+
 
 
 print('')
@@ -203,19 +203,25 @@ print('BOT: Welcome HUMAN, do you dare to challenge me to a deadly game of Nough
 print('')
 print('BOT: We will let the universe decide who starts, brace yourself HUMAN!')
 print('')
-begin = input('Start the game? (y/n): ')
+begin = input('Start the game? (Y/N): ')
+demoBoard()
+
 
 while gamePlay:
-    demoBoard()
     if begin.lower() == 'y':
         main()
+    elif begin.lower() == 'n':
+        print('Goodbye. GAME OVER')
+        print('')
+        quit()
     else:
-        break
+        print(' Please enter Y or N')
 
     answer = input('Do you want to play again? (Y/N): ')
     if answer.lower() == 'y' or answer.lower == 'yes':
         board = [' ' for x in range(10)]
         print('-----------------------------------')
+        print('')
         main()
     else:
         break
