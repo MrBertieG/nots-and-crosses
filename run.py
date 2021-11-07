@@ -61,6 +61,19 @@ def playerMove():
             print('Numbers only, (1 - 9)')
 
 
+def compMove():
+    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
+    move = 0
+
+    for let in ['O', 'X']:
+        for i in possibleMoves:
+            boardCopy = board[:]
+            boardCopy[i] = let
+            if isWinner(boardCopy, let):
+                move = i
+                return move
+
+
 # This is the Quit function where the user can exit by pressing 'q'
 def quit(user_input):
 
