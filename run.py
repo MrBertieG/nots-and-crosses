@@ -52,7 +52,6 @@ def printBoard(board):
     print('   |   |')
     print(' ')
 
-
     
 def isWinner(bo, le):
     return ((bo[7] == le and bo[8] == le and bo[9] == le) or 
@@ -68,7 +67,7 @@ def isWinner(bo, le):
 def playerMove():
     run = True
     while run:
-        move = input('Please select a position to place an \'X\' (1-9): ')
+        move = input('Place your \'X\' HUMAN (1-9) or press \'Q\' to give up : ')
         if move == 'q':
             exit()
         else:
@@ -79,9 +78,9 @@ def playerMove():
                         run = False
                         insertLetter('X', move)
                     else:
-                        print('Sorry, this space is occupied!')
+                        print('Place is taken HUMAN')
                 else:
-                    print('Please type a number within the range!')
+                    print('Numbers 1 - 9 only')
             except:
                 print('Please type a number!')
 
@@ -155,8 +154,47 @@ gamePlay = True
 def main():
     print('Welcome to Tic Tac Toe!')
     printBoard(board)
-    
 
+    if random.randint(0, 1) == 0:
+        while not(isBoardFull(board)):
+            if not(isWinner(board, 'O')):
+                playerMove()
+                printBoard(board)
+            else:
+                print('Sorry, O\'s won this time!')
+                break
+
+            if not(isWinner(board, 'X')):
+                move = compMove()
+                if move == 0:
+                    print('Tie Game!')
+                else:
+                    insertLetter('O', move)
+                    print('Computer placed an \'O\' in position', move , ':')
+                    printBoard(board)
+            else:
+                print('X\'s won this time! Good Job!')
+                break
+    else:
+        while not(isBoardFull(board)):
+            if not(isWinner(board, 'X')):
+                move = compMove()
+                if move == 0:
+                    print('Tie Game!')
+                else:
+                    insertLetter('O', move)
+                    print('Computer placed an \'O\' in position', move , ':')
+                    printBoard(board)
+            else:
+                print('X\'s won this time! Good Job!')
+                break
+
+            if not(isWinner(board, 'O')):
+                playerMove()
+                printBoard(board)
+            else:
+                print('Sorry, O\'s won this time!')
+                break
 
 
 
