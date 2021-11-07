@@ -1,12 +1,13 @@
-# Nouts and Crosses Game
-# The gamne is played between a Player(HUMAN) and the Computer(BOT)
-# The start of the game is established randomly
-# The computer will always check if any of the corners are free. As you might know, the easiest way to win at the game is to capture the corners.
-# The computer will randomly select the corners or thew center if no corners are free
-# The computer will try and block any potential wins for the player
+# Noughts and Crosses Game or aka Tic Tac Toe.
+# The gamne is played between a Player(HUMAN) and the Computer(BOT).
+# The start of the game is established randomly.
+# The computer will always check if any of the corners are free. 
+# As you might know, the easiest way to win at the game is to capture the corners.
+# The computer will randomly select the corners or thew center if no corners are free.
+# The computer will try and block any potential wins for the player.
 # If the board gets filled and no one wins, the programm will return TIE.
-# The player can quit at any time if they imput 'Q'
-# The board's spaces are labeled 1 to 9 starting with 1 at the top left and 9 bottom right corner
+# The player can quit at any time if they imput 'Q'.
+# The board's spaces are labeled 1 to 9 starting with 1 at the top left and 9 bottom right corner.
 
 import random
 
@@ -77,7 +78,7 @@ def isWinner(bo, le):
 def playerMove():
     run = True
     while run:
-        move = input('Place your \'X\' HUMAN (1-9) or press \'Q\' to give up : ')
+        move = input('Place your \'X\' HUMAN (position 1 - 9) or press \'Q\' to give up : ')
         try:
             move = int(move)
             if move > 0 and move < 10:  # If the position is between the parameters the code will continue
@@ -90,6 +91,7 @@ def playerMove():
                 print('Numbers 1 - 9 only') # If the number is out of parameter it will return False and print the message
         except:
             if move == 'q':  # pressing Q will terminate the game
+                print('GAME OVER!')
                 quit()
             else:
                 print('Please type a number!')
@@ -146,6 +148,8 @@ def selectRandom(li):
     return li[r]
 
 
+# Check to see if the board has one or more spaces take.
+# If so it will return False
 def isBoardFull(board):
     if board.count(' ') > 1:
         return False
@@ -156,10 +160,11 @@ def isBoardFull(board):
 gamePlay = True
 
 
+# This is the main body of the functioning game. 
 def main():
-    if random.randint(0, 1) == 0:
-        while not(isBoardFull(board)):
-            if not(isWinner(board, 'O')):
+    if random.randint(0, 1) == 0:  # This will randomly choose if the player or computer will start first
+        while not(isBoardFull(board)):  # This is the 'Player starts fist' option. If the board is full it will terminate
+            if not(isWinner(board, 'O')):  # If the game hasn't been won it will continue
                 playerMove()
                 printBoard(board)
             else:
@@ -179,7 +184,7 @@ def main():
                 break
 
     else:
-        while not(isBoardFull(board)):
+        while not(isBoardFull(board)):  # Thisis the 'Computer starts first Option' 
             if not(isWinner(board, 'X')):
                 move = compMove()
                 if move == 0:
@@ -209,13 +214,15 @@ def main():
 print('')
 print('BOT: Welcome HUMAN, do you dare to challenge me to a deadly game of Noughts and Crosses aka Tic Tac Toe?')
 print('')
-print('BOT: We will let the universe decide who starts, brace yourself HUMAN!')
+print(' We will battle with X and O. Whoever can get 3 in a row, column or diagonal Wins!')
+print('BOT: We will let the universe decide who starts first, brace yourself HUMAN!')
 print('')
-begin = input('Start the game? (Y/N): ')
 demoBoard()
 
 
+# The while loop allows th game to run.
 while gamePlay:
+    begin = input('Start the game? (Y/N): ')
     if begin.lower() == 'y':
         main()
     elif begin.lower() == 'n':
@@ -223,7 +230,7 @@ while gamePlay:
         print('')
         quit()
     else:
-        print(' Please enter Y or N')
+        print('One last try: Please enter Y or N')
 
     answer = input('Do you want to play again? (Y/N): ')
     if answer.lower() == 'y' or answer.lower == 'yes':
