@@ -1,38 +1,29 @@
 #Start Game
 
-print("""
-██     ██ ███████ ██       ██████  ██████  ███    ███ ███████     ████████  ██████  
-██     ██ ██      ██      ██      ██    ██ ████  ████ ██             ██    ██    ██ 
-██  █  ██ █████   ██      ██      ██    ██ ██ ████ ██ █████          ██    ██    ██ 
-██ ███ ██ ██      ██      ██      ██    ██ ██  ██  ██ ██             ██    ██    ██ 
- ███ ███  ███████ ███████  ██████  ██████  ██      ██ ███████        ██     ██████  
-                                                                                    
-                                                                                    
- ██████          ██   ██          ██████      
-██    ██          ██ ██          ██    ██     
-██    ██           ███           ██    ██     
-██    ██          ██ ██          ██    ██     
- ██████          ██   ██          ██████      
-                                          
-""")
+import random
 
-board = [
-    ["-", "-", "-"],
-    ["-", "-", "-"],
-    ["-", "-", "-"]
-]
+board = [' ' for x in range(10)]
 
-USER = True
-TURNS = 0
+def insertLetter(letter, pos):
+    board[pos] = letter
 
+def spaceIsFree(pos):
+    return board[pos] == ' '
 
-# Prints the board on the terminal
-
-def print_board(board):
-    for row in board:
-        for slot in row:
-            print(f"{slot} ", end="")
-        print()
+def printBoard(board):
+    print(' ')
+    print('   |   |')
+    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
+    print('   |   |')
+    print(' ')
 
 
 # This is the Quit function where the user can exit by pressing 'q'
