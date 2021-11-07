@@ -1,8 +1,32 @@
-#Start Game
+# Nouts and Crosses Game
+# The gamne is played between a Player(HUMAN) and the Computer(BOT)
+# The start of the game is established randomly
+# The computer will always check if any of the corners are free. As you might know, the easiest way to win at the game is to capture the corners.
+# The computer will randomly select the corners or thew center if no corners are free
+# The computer will try and block any potential wins for the player
+# If the board gets filled and no one wins, the programm will return TIE.
+# The player can quit at any time if they imput 'Q'
+# The board's spaces are labeled 1 to 9 starting with 1 at the top left and 9 bottom right corner
 
 import random
 
 board = [' ' for x in range(10)]
+
+
+def demoBoard():
+    print(' ')
+    print('   |   |')
+    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
+    print('   |   |')
+    print(' ')
 
 
 def insertLetter(letter, pos):
@@ -119,18 +143,36 @@ def selectRandom(li):
     return li[r]
 
 
+def isBoardFull(board):
+    if board.count(' ') > 1:
+        return False
+    else:
+        return True
+
+
+gamePlay = True
+
+def main():
+    print('Welcome to Tic Tac Toe!')
+    printBoard(board)
+    
 
 
 
-def coordinates(user_input):
-    #This assignemt establishes the position on the board. 
-    #If the position is between 0 and 2, if divided by 3 it will always be 0
-    row = int(user_input / 3)
-    #Finding the remainder of / 3
-    col = user_input
-    if col > 2:
-        col = int(col % 3)
-    return(row, col)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #Takes the user input and takes the board as the parameter. it adds the coordinates it havs and check if anything is there. 
