@@ -168,19 +168,7 @@ def isBoardFull(board):
 
 gamePlay = True
 
-def compStart():
-    if not(isWinner(board, 'X')):
-        move = compMove()
-        if move == 0:
-            print('Tie Game!')
-            break
-        else:
-            insertLetter('O', move)
-            print('BOT placed an \'O\' in position', move , ':')
-            printBoard(board)
-    else:
-        print('You win HUMAN!')
-        break
+
 
 # This is the main body of the functioning game. 
 def main():
@@ -193,21 +181,44 @@ def main():
                 print('BOT is the winner, you LOOSE!')
                 break
 
-            compStart()
+            if not(isWinner(board, 'X')):
+                move = compMove()
+                if move == 0:
+                    print('Tie Game!')
+                else:
+                    insertLetter('O', move)
+                    print('BOT placed an \'O\' in position', move , ':')
+                    printBoard(board)
+            else:
+                print('You win HUMAN!')
+                break
 
     else:
         while not(isBoardFull(board)):  # Thisis the 'Computer starts first Option' 
-            compStart()
+            if not(isWinner(board, 'X')):
+                move = compMove()
+                if move == 0:
+                    print('Tie Game!')
+                    break
+                else:
+                    insertLetter('O', move)
+                    print('BOT placed an \'O\' in position', move , ':')
+                    printBoard(board)
+            else:
+                print('You win HUMAN!')
+                break
 
             if not(isWinner(board, 'O')):
                 if isBoardFull(board):
                     print('Tie Game!')
+                    break
                 else:
                     playerMove()
                     printBoard(board)
             else:
                 print('BOT is the winner, you LOOSE!')
                 break
+
 
 
 introduction_message = """
@@ -227,21 +238,28 @@ demoBoard()
 
 # The while loop allows th game to run.
 while gamePlay:
-    begin = input('Start the game? (Y/N): ')
-    if begin.lower() == 'y':
-        main()
-    elif begin.lower() == 'n':
-        print('Goodbye. GAME OVER')
-        print('')
-        quit()
-    else:
-        print('One last try: Please enter Y or N')
 
-    answer = input('Do you want to play again? (Y/N): ')
-    if answer.lower() == 'y' or answer.lower == 'yes':
-        board = [' ' for x in range(10)]
-        print('-----------------------------------')
-        print('')
-        main()
-    else:
-        break
+    while True:
+        begin = input('Start the game? (Y/N): ')
+        if begin.lower() == 'y':
+            main()
+            break
+
+        elif begin.lower() == 'n':
+            print('Goodbye. GAME OVER')
+            print('')
+            quit()
+        else:
+            print('Select Y or N')
+
+    while True:
+        answer = input('Do you want to play again? (Y/N): ')
+        demoBoard()
+        if answer.lower() == 'y' or answer.lower == 'yes':
+            board = [' ' for x in range(10)]
+            print('-----------------------------------')
+            print('')
+            main()
+        else:
+            print('Goodbye. GAME OVER')
+            quit()
