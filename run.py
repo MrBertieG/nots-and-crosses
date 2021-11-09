@@ -38,7 +38,7 @@ def space_is_free(pos):
 
 def print_board(board):
     """
-    Main board printed each time a player enters a letter.
+    Main board is printed each time a player enters a letter.
     The board contains spaces from 1 to 9, with no 0
     """
     print(' ')
@@ -58,9 +58,9 @@ def print_board(board):
 
 def is_winner(board, letter):
     """
-    Establishes the winning combimnations on the board. It akes the
-    two parameters bo(board) and le(letter)
-    and it will go through each combinatiomn
+    Establishes the winning combimnations on the board.
+    It makes the two parameters board and letterand
+    it will go through each combinatiomn.
     """
     if (board[7] == letter and board[8] == letter and board[9] == letter):
         return True
@@ -79,24 +79,12 @@ def is_winner(board, letter):
     elif (board[3] == letter and board[5] == letter and board[7] == letter):
         return True
 
-    """
-    return ((bo[7] == le and bo[8] == le and bo[9] == le) or
-    (bo[4] == le and bo[5] == le and bo[6] == le) or
-    (bo[1] == le and bo[2] == le and bo[3] == le) or
-    (bo[1] == le and bo[4] == le and bo[7] == le) or
-    (bo[2] == le and bo[5] == le and bo[8] == le) or
-    (bo[3] == le and bo[6] == le and bo[9] == le) or
-    (bo[1] == le and bo[5] == le and bo[9] == le) or
-    (bo[3] == le and bo[5] == le and bo[7] == le))
-"""
-
 
 def player_move():
     """
-    Thie player's move input. If the player's choce is within
-    the parameters 1 - 9 & the space is available
-    it will insert it on the board.
-    If the player inoputs 'Q' the game will terminate
+    This is the player's move input. If the player's choice is within
+    the parameters 1 to 9 & the space is available it will insert it
+    on the board. If the player inoputs 'Q' the game will terminate.
     """
     run = True
     while run:
@@ -127,16 +115,15 @@ def player_move():
 
 def comp_move():
     """
-    This is the 'AI' where it checks for possible free corners.
-    The for loop will iterate over the board parameter,
-    appending a copy of the string values in the original board
-    to the duplicate board.
+    This is the 'AI' function, where it checks for possible free corners.
+    The for loop will iterate over the board parameter, appending a copy
+    of the string values in the original board to the duplicate board.
     """
     # Creates a list of possible moves
     possible_moves = [x for x, letter in enumerate(board)
                       if letter == ' ' and x != 0]
     move = 0
-
+    # Checks for possible winning moves and attempts to block it
     for let in ['O', 'X']:
         for i in possible_moves:
             board_copy = board[:]
@@ -185,17 +172,21 @@ def select_random(li):
     return li[r]
 
 
-# Check to see if the board has one or more spaces take.
-# If so it will return False
 def is_board_full(board):
+    """
+    Check to see if the board has one or more spaces taken.
+    If so it will return False.
+    """
     if board.count(' ') > 1:
         return False
     else:
         return True
 
 
-# This is the main body of the functioning game.
 def main():
+    """
+    This is the main body of the functioning game.
+    """
     # This will randomly choose if the player or computer will start first
     if random.randint(0, 1) == 0:
         # This is the 'Player starts fist' option.
@@ -223,6 +214,7 @@ def main():
 
     else:
         # Thisis the 'Computer starts first Option'
+        # If the board is full it will terminate
         while not(is_board_full(board)):
             if not(is_winner(board, 'X')):
                 move = comp_move()
@@ -288,9 +280,12 @@ while True:
             print('-----------------------------------')
             print('')
             main()
-        elif begin.lower() == 'n':
+            break
+
+        elif answer.lower() == 'n':
             print('Goodbye. GAME OVER')
             print('')
             quit()
+
         else:
             print('Select Y or N')
