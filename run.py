@@ -16,24 +16,25 @@ import random
 board = [' ' for x in range(10)]
 
 
-# Demonstration Board displayes as an intro
-def demoBoard():
-    print(' ')
-    print('   |   | ')
-    print(' 1 | 2 | 3')
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' 4 | 5 | 6')
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' 7 | 8 | 9')
-    print('   |   |')
-    print(' ')
+# Demonstration Board displayiong position layout
+demo_board = """
+
+   |   | 
+ 1 | 2 | 3
+   |   |
+-----------
+   |   |
+ 4 | 5 | 6
+   |   |
+-----------
+   |   |
+ 7 | 8 | 9
+   |   |
+
+"""
 
 
-def insertLetter(letter, pos):
+def insert_letter(letter, pos):
     """
     Method allows to insert any letters into any given positions.
     """
@@ -41,12 +42,12 @@ def insertLetter(letter, pos):
 
 
 # Checks if the space is availabe to use. If not equal to empty it will return False
-def spaceIsFree(pos):
+def space_is_free(pos):
     return board[pos] == ' '
 
 
 # Main board printed each time a player enters a letter. The board contains spaces from 1 to 9, with no 0
-def printBoard(board):
+def print_board(board):
     print(' ')
     print('   |   |')
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
@@ -64,13 +65,26 @@ def printBoard(board):
 
 # Establishes the winning combimnations on the board. It akes the two parameters bo(board) and le(letter)
 # and it will go through each combinatiomn
-def isWinner(bo, le):
-    # # Check row 1 for a match
-    # if (
-    #   board[1] == letter and board[2] == letter and
-    #   board[3] == letter
-    # ):
-    #     return True
+def is_winner(board, letter):
+    # Check row 1 for a match
+    if (board[7] == letter and board[8] == letter and board[9] == letter):
+        return True
+    elif ( board[4] == letter and board[5] == letter and board[6] == letter):
+        return True
+    elif ( board[1] == letter and board[2] == letter and board[3] == letter):
+        return True
+    elif  (board[1] == letter and board[4] == letter and board[7] == letter):
+        return True
+    elif  (board[2] == letter and board[5] == letter and board[8] == letter):
+        return True
+    elif  (board[3] == letter and board[6] == letter and board[9] == letter):
+        return True
+    elif  (board[1] == letter and board[5] == letter and board[9] == letter):
+        return True
+    elif  (board[3] == letter and board[5] == letter and board[7] == letter):
+        return True
+
+    """
     return ((bo[7] == le and bo[8] == le and bo[9] == le) or
     (bo[4] == le and bo[5] == le and bo[6] == le) or
     (bo[1] == le and bo[2] == le and bo[3] == le) or
@@ -79,21 +93,21 @@ def isWinner(bo, le):
     (bo[3] == le and bo[6] == le and bo[9] == le) or
     (bo[1] == le and bo[5] == le and bo[9] == le) or
     (bo[3] == le and bo[5] == le and bo[7] == le))
-
+"""
 
 # Thie player's move input. If the player's choce is within the parameters 1 - 9 & the space is available
 # it will insert it on the board.
 # If the player inoputs 'Q' the game will terminate
-def playerMove():
+def player_move():
     run = True
     while run:
         move = input('Place your \'X\' HUMAN (position 1 - 9) or press \'Q\' to give up : ')
         try:
             move = int(move)
             if move > 0 and move < 10:  # If the position is between the parameters the code will continue
-                if spaceIsFree(move):  # Checks to see if the position sellected is avalable
+                if space_is_free(move):  # Checks to see if the position sellected is avalable
                     run = False
-                    insertLetter('X', move)
+                    insert_letter('X', move)
                 else:
                     print('Place is taken HUMAN')
             else:
@@ -107,51 +121,51 @@ def playerMove():
 
 
 # This is the AI where it checks for possible free corners
-def compMove():
-    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]  # Creates a list of possible moves
+def comp_move():
+    possible_moves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]  # Creates a list of possible moves
     move = 0
     # The for loop will iterate over the board parameter, 
     # appending a copy of the string values in the original board to the duplicate board.
     for let in ['O', 'X']:
-        for i in possibleMoves:
-            boardCopy = board[:]
-            boardCopy[i] = let
-            if isWinner(boardCopy, let):
+        for i in possible_moves:
+            board_copy = board[:]
+            board_copy[i] = let
+            if is_winner(board_copy, let):
                 move = i
                 return move
     
     # Checks to see if the corners are open
-    cornersOpen = []
-    for i in possibleMoves:
+    corners_open = []
+    for i in possible_moves:
         if i in [1, 3, 7, 9]:
-            cornersOpen.append(i)
+            corners_open.append(i)
 
     # If one or more corners are open then it will randomly select one      
-    if len(cornersOpen) > 0:
-        move = selectRandom(cornersOpen)
+    if len(corners_open) > 0:
+        move = select_random(corners_open)
         return move
 
     # This is the center of the board, 
     # another advantage in the game
-    if 5 in possibleMoves:
+    if 5 in possible_moves:
         move = 5
         return move
 
     # Looks for the middle of the 4 edges
-    edgesOpen = []
-    for i in possibleMoves:
+    edges_open = []
+    for i in possible_moves:
         if i in [2, 4, 6, 8]:
-            edgesOpen.append(i)
+            edges_open.append(i)
 
     # If any edges are open it will randomly select one        
-    if len(edgesOpen) > 0:
-        move = selectRandom(edgesOpen)
+    if len(edges_open) > 0:
+        move = select_random(edges_open)
         
     return move
 
 # Random Function will select a position randomly,
 # based on the availability
-def selectRandom(li):
+def select_random(li):
     ln = len(li)
     r = random.randrange(0, ln)
     return li[r]
@@ -159,62 +173,62 @@ def selectRandom(li):
 
 # Check to see if the board has one or more spaces take.
 # If so it will return False
-def isBoardFull(board):
+def is_board_full(board):
     if board.count(' ') > 1:
         return False
     else:
         return True
 
 
-gamePlay = True
+game_play = True
 
 
 
 # This is the main body of the functioning game. 
 def main():
     if random.randint(0, 1) == 0:  # This will randomly choose if the player or computer will start first
-        while not(isBoardFull(board)):  # This is the 'Player starts fist' option. If the board is full it will terminate
-            if not(isWinner(board, 'O')):  # If the game hasn't been won it will continue
-                playerMove()
-                printBoard(board)
+        while not(is_board_full(board)):  # This is the 'Player starts fist' option. If the board is full it will terminate
+            if not(is_winner(board, 'O')):  # If the game hasn't been won it will continue
+                player_move()
+                print_board(board)
             else:
                 print('BOT is the winner, you LOOSE!')
                 break
 
-            if not(isWinner(board, 'X')):
-                move = compMove()
+            if not(is_winner(board, 'X')):
+                move = comp_move()
                 if move == 0:
                     print('Tie Game!')
                 else:
-                    insertLetter('O', move)
+                    insert_letter('O', move)
                     print('BOT placed an \'O\' in position', move , ':')
-                    printBoard(board)
+                    print_board(board)
             else:
                 print('You win HUMAN!')
                 break
 
     else:
-        while not(isBoardFull(board)):  # Thisis the 'Computer starts first Option' 
-            if not(isWinner(board, 'X')):
-                move = compMove()
+        while not(is_board_full(board)):  # Thisis the 'Computer starts first Option' 
+            if not(is_winner(board, 'X')):
+                move = comp_move()
                 if move == 0:
                     print('Tie Game!')
                     break
                 else:
-                    insertLetter('O', move)
+                    insert_letter('O', move)
                     print('BOT placed an \'O\' in position', move , ':')
-                    printBoard(board)
+                    print_board(board)
             else:
                 print('You win HUMAN!')
                 break
 
-            if not(isWinner(board, 'O')):
-                if isBoardFull(board):
+            if not(is_winner(board, 'O')):
+                if is_board_full(board):
                     print('Tie Game!')
                     break
                 else:
-                    playerMove()
-                    printBoard(board)
+                    player_move()
+                    print_board(board)
             else:
                 print('BOT is the winner, you LOOSE!')
                 break
@@ -233,11 +247,11 @@ brace yourself HUMAN!
 
 """
 print(introduction_message)
-demoBoard()
+print(demo_board)
 
 
 # The while loop allows th game to run.
-while gamePlay:
+while game_play:
 
     while True:
         begin = input('Start the game? (Y/N): ')
@@ -254,7 +268,7 @@ while gamePlay:
 
     while True:
         answer = input('Do you want to play again? (Y/N): ')
-        demoBoard()
+        print(demo_board)
         if answer.lower() == 'y' or answer.lower == 'yes':
             board = [' ' for x in range(10)]
             print('-----------------------------------')
