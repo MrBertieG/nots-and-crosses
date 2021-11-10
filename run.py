@@ -19,6 +19,61 @@ demo_board = """
    |   |
 """
 
+loose_message = """
+
+▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████   ▒█████    ██████ ▓█████ 
+ ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██▒  ██▒▒██    ▒ ▓█   ▀ 
+  ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒██░    ▒██░  ██▒▒██░  ██▒░ ▓██▄   ▒███   
+  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ▒██░    ▒██   ██░▒██   ██░  ▒   ██▒▒▓█  ▄ 
+  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░██████▒░ ████▓▒░░ ████▓▒░▒██████▒▒░▒████▒
+   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒    ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░░ ▒░ ░
+ ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░    ░ ░ ▒  ░  ░ ▒ ▒░   ░ ▒ ▒░ ░ ░▒  ░ ░ ░ ░  ░
+ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░ ░   ░ ░ ░ ▒  ░ ░ ░ ▒  ░  ░  ░     ░   
+ ░ ░         ░ ░     ░            ░  ░    ░ ░      ░ ░        ░     ░  ░
+ ░ ░                                                                    
+
+"""
+
+won_message = """
+
+██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗
+╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██╔═══██╗████╗  ██║
+ ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║
+  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║   ██║██║╚██╗██║
+   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║ ╚████║
+   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝
+                                                            
+                                                         
+"""
+
+game_over = """
+
+ ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████  
+██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██ 
+██   ███ ███████ ██ ████ ██ █████       ██    ██ ██    ██ █████   ██████  
+██    ██ ██   ██ ██  ██  ██ ██          ██    ██  ██  ██  ██      ██   ██ 
+ ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██ 
+                                                                          
+                                                                          
+
+"""
+
+tie_game = """
+
+ ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+ ▀▀▀▀█░█▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ 
+     ▐░▌          ▐░▌     ▐░▌          
+     ▐░▌          ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ 
+     ▐░▌          ▐░▌     ▐░░░░░░░░░░░▌
+     ▐░▌          ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ 
+     ▐░▌          ▐░▌     ▐░▌          
+     ▐░▌      ▄▄▄▄█░█▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ 
+     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+      ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
+                                       
+
+"""
 
 def insert_letter(letter, pos):
     """
@@ -107,7 +162,7 @@ def player_move():
         except:
             # Pressing Q will terminate the game
             if move == 'q':
-                print('GAME OVER!')
+                print(game_over)
                 quit()
             else:
                 print('Please type a number!')
@@ -197,19 +252,20 @@ def main():
                 player_move()
                 print_board(board)
             else:
-                print('BOT is the winner, you LOOSE!')
+                print('BOT is the winner')
+                print(loose_message)
                 break
 
             if not(is_winner(board, 'X')):
                 move = comp_move()
                 if move == 0:
-                    print('Tie Game!')
+                    print(tie_game)
                 else:
                     insert_letter('O', move)
                     print('BOT placed an \'O\' in position', move, ':')
                     print_board(board)
             else:
-                print('You win HUMAN!')
+                print(won_message)
                 break
 
     else:
@@ -219,7 +275,7 @@ def main():
             if not(is_winner(board, 'X')):
                 move = comp_move()
                 if move == 0:
-                    print('Tie Game!')
+                    print(tie_game)
                     break
                 else:
                     insert_letter('O', move)
@@ -227,17 +283,19 @@ def main():
                     print_board(board)
             else:
                 print('You win HUMAN!')
+                print(won_message)
                 break
 
             if not(is_winner(board, 'O')):
                 if is_board_full(board):
-                    print('Tie Game!')
+                    print(tie_game)
                     break
                 else:
                     player_move()
                     print_board(board)
             else:
-                print('BOT is the winner, you LOOSE!')
+                print('BOT is the winner')
+                print(loose_message)
                 break
 
 
@@ -281,7 +339,7 @@ while True:
             break
 
         elif begin.lower() == 'n':
-            print('Goodbye. GAME OVER')
+            print(game_over)
             print('')
             quit()
         else:
@@ -295,10 +353,9 @@ while True:
             print('-----------------------------------')
             print('')
             main()
-            break
 
         elif answer.lower() == 'n':
-            print('Goodbye. GAME OVER')
+            print(game_over)
             print('')
             quit()
 
