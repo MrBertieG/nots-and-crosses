@@ -1,4 +1,7 @@
 import random
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset = True)
 
 # Creates a board with 10 empty values
 board = [' ' for x in range(10)]
@@ -75,6 +78,7 @@ tie_game = """
 
 """
 
+
 def insert_letter(letter, pos):
     """
     Method allows to insert any letters into any given
@@ -97,17 +101,17 @@ def print_board(board):
     The board contains spaces from 1 to 9, with no 0
     """
     print(' ')
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-    print('   |   |')
+    print(Fore.YELLOW + '   |   |')
+    print(Fore.YELLOW + ' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
+    print(Fore.YELLOW + '   |   |')
+    print(Fore.YELLOW + '-----------')
+    print(Fore.YELLOW + '   |   |')
+    print(Fore.YELLOW + ' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print(Fore.YELLOW + '   |   |')
+    print(Fore.YELLOW + '-----------')
+    print(Fore.YELLOW + '   |   |')
+    print(Fore.YELLOW + ' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
+    print(Fore.YELLOW + '   |   |')
     print(' ')
 
 
@@ -155,17 +159,17 @@ def player_move():
                     run = False
                     insert_letter('X', move)
                 else:
-                    print('Place is taken HUMAN')
+                    print(Fore.RED + 'Place is taken HUMAN')
             else:
                 # User input validation
-                print('Numbers 1 - 9 only')
+                print(Fore.RED + 'Numbers 1 - 9 only')
         except:
             # Pressing Q will terminate the game
             if move == 'q':
                 print(game_over)
                 quit()
             else:
-                print('Please type a number!')
+                print(Fore.RED + 'Please type a number!')
 
 
 def comp_move():
@@ -252,8 +256,8 @@ def main():
                 player_move()
                 print_board(board)
             else:
-                print('BOT is the winner')
-                print(loose_message)
+                print(Fore.RED + 'BOT is the winner')
+                print(Fore.RED + loose_message)
                 break
 
             if not(is_winner(board, 'X')):
@@ -265,7 +269,7 @@ def main():
                     print('BOT placed an \'O\' in position', move, ':')
                     print_board(board)
             else:
-                print(won_message)
+                print(Fore.YELLOW + won_message)
                 break
 
     else:
@@ -282,8 +286,8 @@ def main():
                     print('BOT placed an \'O\' in position', move, ':')
                     print_board(board)
             else:
-                print('You win HUMAN!')
-                print(won_message)
+                print(Fore.GOLD + 'You win HUMAN!')
+                print(Fore.YELLOW + won_message)
                 break
 
             if not(is_winner(board, 'O')):
@@ -295,7 +299,7 @@ def main():
                     print_board(board)
             else:
                 print('BOT is the winner')
-                print(loose_message)
+                print(Fore.RED + loose_message)
                 break
 
 
@@ -325,8 +329,8 @@ BOT: We will let the universe decide who starts first,
 brace yourself HUMAN!
 
 """
-print(introduction_message)
-print(demo_board)
+print(Fore.YELLOW + introduction_message)
+print(Fore.YELLOW + demo_board)
 
 
 # The while loop allows th game to run.
@@ -339,7 +343,7 @@ while True:
             break
 
         elif begin.lower() == 'n':
-            print(game_over)
+            print(Fore.RED + game_over)
             print('')
             quit()
         else:
@@ -355,7 +359,7 @@ while True:
             main()
 
         elif answer.lower() == 'n':
-            print(game_over)
+            print(Fore.RED + game_over)
             print('')
             quit()
 
