@@ -242,11 +242,26 @@ def main():
 
 
 introduction_message = """
+
+
+___   ___    ____    ____   _______.     ______   
+\  \ /  /    \   \  /   /  /       |    /  __  \  
+ \  V  /      \   \/   /  |   (----`   |  |  |  | 
+  >   <        \      /    \   \       |  |  |  | 
+ /  .  \        \    / .----)   |      |  `--'  | 
+/__/ \__\        \__/  |_______/        \______/  
+                                                  
+
+
 BOT: Welcome HUMAN, do you dare to challenge me to a deadly
 game of Noughts and Crosses aka Tic Tac Toe?
 
 We will battle with X and O. Whoever can get 3 in a row,
-column or diagonal Wins!
+a column or in a diagonal Wins!
+
+The numbered positions on the board indicate the spaces
+you need to occupy. Use your keyboard to enter a number
+from 1 to 9.
 
 BOT: We will let the universe decide who starts first,
 brace yourself HUMAN!
@@ -260,7 +275,7 @@ print(demo_board)
 while True:
 
     while True:
-        begin = input('Start the game? (Y/N): ')
+        begin = input('Initiate the game? (Y/N): ')
         if begin.lower() == 'y':
             main()
             break
