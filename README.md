@@ -103,16 +103,22 @@ The user has a choice of various inputs. If the user enters a string or number n
 - "Place your 'X' HUMAN (position 1 - 9) or press 'Q' to give up :"<br>
 	![play validation](img/validation_play.png)
 
-## Game Colour Features
-The game has different colour features for a better contrast and visual appeal.
+## Game Colour Features & ASCII Art
+The game has different colour features and additional ASCII Art for a better contrast and visual appeal.
 
 - Game Intro
 	![text intro](img/heroku_start1.png)
 
+- "You WON"
+	![winning](img/you_won_play.png)
 
+- "Bot is the winner"
+	![loosing](img/you_loose_play.png)
 
+- "The game is a tie"
+	![tie](img/tie_play.png)
 
-
+	
 ASCII image found in:
 Intro message
 Insert image
