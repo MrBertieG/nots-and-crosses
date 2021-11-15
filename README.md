@@ -129,6 +129,10 @@ The game has different colour features and additional ASCII Art for a better con
 
 <br>
 
+## End of the Game
+
+The user has the option to play again at the end of each game or quit the game all together.
+
 ## Code Features
 
 - The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX.
@@ -159,3 +163,32 @@ The program passes the PEP8 Validator without any issues.
 ### Manual Testing
 
 ![manual testing](img/manual_testing.png)
+
+<br><br>
+
+## <a name="tech-used">5. Technology used</a>
+
+For the creation of this game I have used the following resources:
+
+- Github: to store the repository.
+- Gitpod: to write the code.
+- Slack: to ask for advice from other students.
+- Stack Overflow: to search for bug fixes.
+- PEP8: for making sure the code remains compliant.
+- Youtube: for code explanation.
+- Google: searching for various troubleshooting and inspiration searches.
+- patorjk.com: for the ASCII Art.
+- inventwithpython.com: for the inspiration of the program development
+
+## <a name="deployment">6. Deployment</a>
+
+## <a name="bugs">7. Bugs</a>
+### Known Bugs
+
+Throughout the development process a few bugs have been encountered:
+- The game was not terminating when the board was filled with the Player being the last user to input a symbol. The game was still expecting the next input without being able to continue. Unless Q was pressed the game was stuck.
+
+The solution was to enter a break statement when the board has been filled and draw the conclusion if it was a win, loose or tie.
+
+
+## <a name="deployment">8. Credits</a>
