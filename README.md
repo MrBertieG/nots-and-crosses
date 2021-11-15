@@ -1,5 +1,8 @@
 # Noughts and Crosses aka Tic Tac Toe
+
 Live website [here](https://noughts-and-crosses-ag.herokuapp.com/).
+<br>
+
 ![heroku](img/heroku_start1.png)
 ![heroku](img/heroku_start.png)
 
@@ -41,9 +44,9 @@ The player can quit at any time if they imput 'Q'.
 - Code Features
 
 ### [3. Wireframe](#wireframe)
-### [4. Deployment](#deployment)
-### [5. Manual Testing](#manual-testing)
-### [6. Technologies Used](#tech-used)
+### [4. Testing](#manual-testing)
+### [5. Technologies Used](#tech-used)
+### [6. Deployment](#deployment)
 ### [7. Bugs](#bugs)
 ### [8. Credits](#credits)
 
@@ -141,3 +144,18 @@ in this code the program makes a copy of the board and uses the player's inputs 
 The wireframe was created using Lucidchart.
 
 ![wireframe](img/wireframe_xando.jpeg)
+
+<br><br>
+
+## <a name="wireframe">4. Testing</a>
+
+### PEP8 Validator
+
+The program passes the PEP8 Validator without any issues.
+![pep8 validator](img/pep8_validator.png)
+
+<br><br>
+
+### Manual Testing
+
+![manual testing](img/manual_testing.png)
