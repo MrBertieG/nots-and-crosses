@@ -34,15 +34,12 @@ The player can quit at any time if they imput 'Q'.
 	- New Users
 	- Returning Users
 	- Frequent Users
+- Color Design
 ### [2. Features](#features)
 - Interractive Gameplay
-- Home Page
-- Quiz Page
-- End Page
-- Leaderboard Page
-- Social Media Links
-- Rules Window
-- Contact Window
+- Input Validation
+- Code Features
+
 ### [3. Wireframe](#wireframe)
 ### [4. Deployment](#deployment)
 ### [5. Manual Testing](#manual-testing)
@@ -88,6 +85,15 @@ The main goal of this game is to challenge the user to use their strategic abili
 	- If any new graphical images have been uploaded
 	- if any graphics have changed or been updated.
 
+<br>
+
+## Color Design
+
+Since this program is designed to challenge and entertain, I have decided to add the Gold colour in as it contrasts with the black background and makes the text more vibrant.
+
+The red colour is used to underline a problem with the user's inputs and also to indicate that the player has lost. Since the ASCII Art for "YOU LOOSE" is meant to replicate running 'blood' I have also chosen the red colour for it as it would add drama. <br>
+![loose text](img/you_loose_play_txt.png)
+
 <br><br>
 
 # 2. Features
@@ -118,27 +124,20 @@ The game has different colour features and additional ASCII Art for a better con
 - "The game is a tie"
 	![tie](img/tie_play.png)
 
-	
-ASCII image found in:
-Intro message
-Insert image
-Win scenario
-Insert image
-Tie Scenario
-Insert image
-Loose Scenario
-Insert image
-Quit Scenario
-Insert image
-The game’s text is gold for better contrast and appearance
-Insert image
-- the game has simple input options
-User input validation messages are shown in red.
-Insert image
-- flip coin start
-Program checks if the user entered a “approved” value.
-Insert image
-Automated computer input
-Computer has thew ability to block moves
-Insert image
-Chance to play again.
+<br>
+
+## Code Features
+
+- The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX.
+![random start player](img/ran_start_player.png)
+![random start computer](img/ran_start_comp.png)
+
+- The Computer will block a possible winning move.<br>
+	![blocking a move](img/block_move.png)<br>
+in this code the program makes a copy of the board and uses the player's inputs to see if it can win on the next move. If yes, then it will enter the symbol in the possible winning position.
+
+
+## <a name="wireframe">3. Wireframe</a>
+The wireframe was created using Lucidchart.
+
+![wireframe](img/wireframe_xando.jpeg)
