@@ -244,6 +244,7 @@ def main():
         while not(is_board_full(board)):
             # If the game hasn't been won it will continue
             if not(is_winner(board, 'O')):
+                print('')
                 player_move()
                 print_board(board)
             else:
@@ -254,6 +255,7 @@ def main():
             if not(is_winner(board, 'X')):
                 move = comp_move()
                 if move == 0:
+                    print('The game is a Tie')
                     print(tie_game)
                 else:
                     insert_letter('O', move)
@@ -270,6 +272,7 @@ def main():
             if not(is_winner(board, 'X')):
                 move = comp_move()
                 if move == 0:
+                    print('The game is a Tie')
                     print(tie_game)
                     break
                 else:
@@ -283,6 +286,7 @@ def main():
 
             if not(is_winner(board, 'O')):
                 if is_board_full(board):
+                    print('The game is a Tie')
                     print(tie_game)
                     break
                 else:
@@ -339,7 +343,7 @@ while True:
 
     while True:
         answer = input('Do you want to play again? (Y/N): ')
-        print(demo_board)
+        print(Fore.YELLOW + demo_board)
         if answer.lower() == 'y' or answer.lower == 'yes':
             board = [' ' for x in range(10)]
             print('-----------------------------------')
