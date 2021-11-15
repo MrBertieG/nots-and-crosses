@@ -169,7 +169,7 @@ def comp_move():
     The for loop will iterate over the board parameter, appending a copy
     of the string values in the original board to the duplicate board.
     """
-    # Creates a list of possible moves
+    # Creates a list of possible winning moves
     possible_moves = [x for x, letter in enumerate(board)
                       if letter == ' ' and x != 0]
     move = 0
