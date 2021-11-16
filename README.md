@@ -245,6 +245,12 @@ The game was not terminating when the board was filled with the Player being the
 Solution:<br>
 The solution was to enter a break statement when the board has been filled and draw the conclusion if it was a win, loose or tie.
 
+Problem:<br>
+The code wouldn't pass PEP8 Validation due to a boolean code being too big. Having tried to divide it and bring it to the next line, the code wouldn't work.
+
+Solution:<br>
+Thanks to some constructive feedback from my mentor, I have converted the boolean code to a if condition. This has allowed me to be able to "split" the code and bring it to the next line.
+<br><br>
 ### Existing Bugs
 
 Althought there are no existing known bugs, one thing is to be mentioned. If the BOT starts first, it is impossible to win the game. The reason behind this is because the BOT will aways choose any random corners when starting first. This is a great strategy to win however the best outcome for the HUMAN is a tie.
@@ -257,3 +263,11 @@ I have come to the realisation of this when the game was fully developed. If mor
 [Top of the page](#top)
 
 ## <a name="deployment">8. Credits</a>
+
+- The skeleton of the game was inspired by [Tech with Tim](https://www.techwithtim.net/) as I have been watching his page contents for the past year.
+
+- [Stack Overflow](https://stackoverflow.com/) for help with code troubleshooting and suggestions on best practices.
+
+- Code Institute for the Gitpod initial template.
+
+- My mentor Marcel Mulders for the constructive feedback and always pushing to go the extra step.
