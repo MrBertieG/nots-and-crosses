@@ -270,7 +270,7 @@ I have come to the realisation of this when the game was fully developed. If mor
 
 [Top of the page](#top)
 
-## <a name="deployment">8. Credits</a>
+## <a name="credits">8. Credits</a>
 
 - The skeleton of the game was inspired by [Tech with Tim](https://www.techwithtim.net/) as I have been watching his page contents for the past year.
 
