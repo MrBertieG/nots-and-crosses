@@ -205,6 +205,7 @@ For the creation of this game I have used the following resources:
 - Slack: to ask for advice from other students.
 - Stack Overflow: to search for bug fixes.
 - PEP8: for making sure the code remains compliant.
+- [Colorama](https://pypi.org/project/colorama/) ANSI escape character sequences have long been used to produce colored terminal text and cursor positioning on Unix and Macs.
 - Youtube: for code explanation.
 - Google: searching for various troubleshooting and inspiration.
 - patorjk.com: for the ASCII Art.
