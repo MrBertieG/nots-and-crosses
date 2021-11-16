@@ -174,6 +174,7 @@ def comp_move():
                       if letter == ' ' and x != 0]
     move = 0
     # Checks for possible winning moves and attempts to block it
+    # This code was inspired by 'Tech with Tim'
     for let in ['O', 'X']:
         for i in possible_moves:
             board_copy = board[:]
