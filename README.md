@@ -10,7 +10,7 @@ Live website [here](https://noughts-and-crosses-ag.herokuapp.com/).
 
 Welcome to the famous game of Noughts and Crosses aka Tic Tac Toe for US users.
 This game is played between a player (HUMAN) and the computer (BOT). 
-This game is played by entering X and O in one of the nine positions.  There are three possible outcomes for the user. Win, Loose or Tie.
+This game is played by entering X and O in one of the nine positions.  There are three possible outcomes for the user. Win, Lose or Tie.
 
 The board has spaces labeled from 1 to 9 starting with 1 at the top left and 9 bottom right corner.
 
@@ -107,8 +107,8 @@ Since this program is designed to challenge and entertain, I have decided to add
 The red colour is used to underline a problem with the user's inputs and also to indicate that the player has lost. <br>
 ![warning](img/warning_text.png)<br>
 
-Since the ASCII Art for "YOU LOOSE" is meant to replicate running 'blood' I have also chosen the red colour for it as it would add drama. <br>
-![loose text](img/you_loose_play_txt.png)
+Since the ASCII Art for "YOU LOSE" is meant to replicate running 'blood' I have also chosen the red colour for it as it would add drama. <br>
+![lose text](img/you_lose_play_txt.png)
 
 <br><br>
 
@@ -136,10 +136,10 @@ The game has different colour features and additional ASCII Art for a better con
 	![text intro](img/heroku_start1.png)
 
 - "You WON"
-	![winning](img/you_won_play.png)
+	![winning](img/you_lose_play_txt.png)
 
 - "Bot is the winner"
-	![loosing](img/you_loose_play.png)
+	![loosing](img/you_lose_gameplay.png)
 
 - "The game is a tie"
 	![tie](img/tie_play.png)
