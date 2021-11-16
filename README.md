@@ -24,7 +24,7 @@ The BOT will try and block any potential wins for the player.
 
 If the board gets filled and no one wins, the programm will assume it's a TIE.
 
-The player can quit at any time if they imput 'Q'.
+The player can quit at any time if they input 'Q'.
 
 <br><br>
 
@@ -39,15 +39,21 @@ The player can quit at any time if they imput 'Q'.
 	- Frequent Users
 - Color Design
 ### [2. Features](#features)
-- Interractive Gameplay
+- Interactive Gameplay
 - Input Validation
+- Game Colour Features & ASCII Art
+- End of the Game
 - Code Features
 
 ### [3. Wireframe](#wireframe)
 ### [4. Testing](#manual-testing)
+- PEP8 Validator
+- Manual Testing
 ### [5. Technologies Used](#tech-used)
 ### [6. Deployment](#deployment)
 ### [7. Bugs](#bugs)
+- Known Fixed Bugs
+- Existing Bugs
 ### [8. Credits](#credits)
 
 <br><br>
@@ -151,9 +157,9 @@ The user has the option to play again at the end of each game or quit the game a
 [Top of the page](#top)
 ## Code Features
 
-- The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX. If the code picks 0 then the player will start first, else it will be the computer.
+- The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX. If the code picks 0 then the player will start first, else it will be the computer.<br>
 ![random start player](img/ran_start_player.png)<br>
-Player starts first code.
+Player starts first code.<br>
 ![random start computer](img/ran_start_comp.png)<br>
 Computer starts first code.
 <br><br>
@@ -210,7 +216,7 @@ For the creation of this game I have used the following resources:
 
 ## <a name="deployment">6. Deployment</a>
 
-To the deploy the project, I have used the cloud platform Heroku. 
+To deploy the project, I have used the cloud platform Heroku. 
 
 These are the steps I took for the deployment:
 - make sure the lastest pushed version of the repository is uploaded to Github.
@@ -222,7 +228,7 @@ These are the steps I took for the deployment:
 - then below, select the repo-name from the Github repository, noughts-and-crosses.
 - select 'Search' and it will be linked automatically.
 - click the "Connect" button. 
-- now "Enable Automatic Deploys"
+- now click "Enable Automatic Deploys"
 - now on the top bar select "Settings"
 - look for "Add Buildpack" and select python first, press "Save changes" then repeat the process again and select nodejs in this  exact order.
 - now click on "Personal" on the top left corner.
@@ -235,15 +241,16 @@ These are the steps I took for the deployment:
 [Top of the page](#top)
 
 ## <a name="bugs">7. Bugs</a>
+
 ### Known Fixed Bugs
 
-Throughout the development process a few bugs have been encountered, however one ws paticularly challenging to solve:
+Throughout the development process a few bugs have been encountered, however one was paticularly challenging to solve:
 
 Problem:<br>
 The game was not terminating when the board was filled with the Player being the last user to input a symbol. The game was still expecting the next input without being able to continue as the board was full. Unless Q was pressed the game was stuck with no outcome.<br>
 
 Solution:<br>
-The solution was to enter a break statement when the board has been filled and draw the conclusion if it was a win, loose or tie.
+The solution was to enter a break statement when the board has been filled and draw the conclusion if it was a win, loss or tie.
 
 Problem:<br>
 The code wouldn't pass PEP8 Validation due to a boolean code being too big. Having tried to divide it and bring it to the next line, the code wouldn't work.
@@ -255,7 +262,7 @@ Thanks to some constructive feedback from my mentor, I have converted the boolea
 
 Althought there are no existing known bugs, one thing is to be mentioned. If the BOT starts first, it is impossible to win the game. The reason behind this is because the BOT will aways choose any random corners when starting first. This is a great strategy to win however the best outcome for the HUMAN is a tie.
 
-Perhaps this could have been solved by introducing an element of difficulty selection at the begining of the game for the user to choose. Beginner or Advanced. In the Beginner mode the computer will select anything but the corners, allowing for a chance of winning. In the Advanced mode, the computer will have chosen a position completly random leaving the corner option in as well.
+Perhaps this could have been solved by introducing an element of difficulty selection at the begining of the game for the user to choose i.e. Beginner or Advanced. In the Beginner mode, the computer will select anything but the corners, allowing for a chance of winning. In the Advanced mode, the computer will have chosen a position completly random leaving the corner option in as well.
 
 I have come to the realisation of this when the game was fully developed. If more time was allowed I would have added this feature in as well.
 <br><br>

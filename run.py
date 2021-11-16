@@ -239,7 +239,7 @@ def main():
     """
     # This will randomly choose if the player or computer will start first
     if random.randint(0, 1) == 0:
-        # This is the 'Player starts fist' option.
+        # This is the 'Player starts first' option.
         # If the board is full it will terminate
         while not(is_board_full(board)):
             # If the game hasn't been won it will continue
@@ -267,7 +267,7 @@ def main():
                 break
 
     else:
-        # Thisis the 'Computer starts first Option'
+        # This is the 'Computer starts first' option
         # If the board is full it will terminate
         while not(is_board_full(board)):
             if not(is_winner(board, 'X')):
