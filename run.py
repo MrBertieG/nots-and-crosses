@@ -22,7 +22,7 @@ demo_board = """
    |   |
 """
 
-loose_message = """
+lose_message = """
 
 ▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████   ▒█████    ██████ ▓█████
  ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██▒  ██▒▒██    ▒ ▓█   ▀
@@ -249,7 +249,7 @@ def main():
                 print_board(board)
             else:
                 print(Fore.RED + 'BOT is the winner')
-                print(Fore.RED + loose_message)
+                print(Fore.RED + lose_message)
                 break
 
             if not(is_winner(board, 'X')):
@@ -295,7 +295,7 @@ def main():
                     print_board(board)
             else:
                 print('BOT is the winner')
-                print(Fore.RED + loose_message)
+                print(Fore.RED + lose_message)
                 break
 
 
