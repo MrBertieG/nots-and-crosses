@@ -80,37 +80,48 @@ The main goal of this game is to challenge the user to use their strategic abili
 	- initiate the game
 	- quit the game
 	- play the game
+	- restart the game
 
 <br>
 
 - ### A frequent user:
 	A frequent user would want to know:
-	- If any new graphical images have been uploaded
+	- If any new graphical images have been uploaded.
 	- if any graphics have changed or been updated.
 
 <br>
 
+[Top of the page](#top)
+
 ## Color Design
 
-Since this program is designed to challenge and entertain, I have decided to add the Gold colour in as it contrasts with the black background and makes the text more vibrant.
+Since this program is designed to challenge and entertain, I have decided to add the Gold colour in as it contrasts with the black background and makes the text more vibrant.<br>
+![gold text](img/gold_text.png)
 
-The red colour is used to underline a problem with the user's inputs and also to indicate that the player has lost. Since the ASCII Art for "YOU LOOSE" is meant to replicate running 'blood' I have also chosen the red colour for it as it would add drama. <br>
+The red colour is used to underline a problem with the user's inputs and also to indicate that the player has lost. <br>
+![warning](img/warning_text.png)<br>
+
+Since the ASCII Art for "YOU LOOSE" is meant to replicate running 'blood' I have also chosen the red colour for it as it would add drama. <br>
 ![loose text](img/you_loose_play_txt.png)
 
 <br><br>
 
-# 2. Features
+[Top of the page](#top)
+
+# <a name="features">2. Features</a>
 ## Interractive Gameplay
 The user will play against a computer. The computer will choose different positions on the board depending on the user's previous input. The moves are not always the same.
 
 ## Input Validation
-The user has a choice of various inputs. If the user enters a string or number not within the range then the following message will appear, prompting the user to try again.
+The user has a choice of various inputs. If the user enters a string or a number, not within the range then the following message will appear, prompting the user to try again.
 
 - "Initiate the game? (Y/N):" <br>
 	![start validation](img/validation_start.png)
 
 - "Place your 'X' HUMAN (position 1 - 9) or press 'Q' to give up :"<br>
 	![play validation](img/validation_play.png)
+
+[Top of the page](#top)
 
 ## Game Colour Features & ASCII Art
 The game has different colour features and additional ASCII Art for a better contrast and visual appeal.
@@ -129,21 +140,31 @@ The game has different colour features and additional ASCII Art for a better con
 
 <br>
 
+[Top of the page](#top)
+
 ## End of the Game
 
 The user has the option to play again at the end of each game or quit the game all together.
 
+![game over](img/game_over.png)
+
+[Top of the page](#top)
 ## Code Features
 
-- The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX.
-![random start player](img/ran_start_player.png)
-![random start computer](img/ran_start_comp.png)
+- The "flip a coin start" is a small code which allows the program to decide who goes first. It's a very simple piece of code, but it playes a big part in the running of the program and UX. If the code picks 0 then the player will start first, else it will be the computer.
+![random start player](img/ran_start_player.png)<br>
+Player starts first code.
+![random start computer](img/ran_start_comp.png)<br>
+Computer starts first code.
+<br><br>
 
 - The Computer will block a possible winning move.<br>
 	![blocking a move](img/block_move.png)<br>
-in this code the program makes a copy of the board and uses the player's inputs to see if it can win on the next move. If yes, then it will enter the symbol in the possible winning position.
+In this code the program makes a copy of the board and uses the player's inputs to see if it can win on the next move. If yes, then it will enter it's own symbol in the possible winning position.
 
+<br><br>
 
+[Top of the page](#top)
 ## <a name="wireframe">3. Wireframe</a>
 The wireframe was created using Lucidchart.
 
@@ -151,6 +172,7 @@ The wireframe was created using Lucidchart.
 
 <br><br>
 
+[Top of the page](#top)
 ## <a name="wireframe">4. Testing</a>
 
 ### PEP8 Validator
@@ -160,13 +182,15 @@ The program passes the PEP8 Validator without any issues.
 
 <br><br>
 
+[Top of the page](#top)
 ### Manual Testing
 
 ![manual testing](img/manual_testing.png)
 
 <br><br>
 
-## <a name="tech-used">5. Technology used</a>
+[Top of the page](#top)
+## <a name="tech-used">5. Technologies used</a>
 
 For the creation of this game I have used the following resources:
 
@@ -176,11 +200,37 @@ For the creation of this game I have used the following resources:
 - Stack Overflow: to search for bug fixes.
 - PEP8: for making sure the code remains compliant.
 - Youtube: for code explanation.
-- Google: searching for various troubleshooting and inspiration searches.
+- Google: searching for various troubleshooting and inspiration.
 - patorjk.com: for the ASCII Art.
-- inventwithpython.com: for the inspiration of the program development
+- inventwithpython.com: for the inspiration of the program's development approach.
+
+<br><br>
+
+[Top of the page](#top)
 
 ## <a name="deployment">6. Deployment</a>
+
+To the deploy the project, I have used the cloud platform Heroku. 
+
+These are the steps I took for the deployment:
+- make sure the lastest pushed version of the repository is uploaded to Github.
+- create a Heroku account.
+- select "New" on the right hand corner, and "Create new app".
+- in the new page, enter the App name making sure it's available, in my case noughts-and-crosses-ag.
+- choose the reagion, in my case Europe.
+- select the "Deployment method", in my case Github.
+- then below, select the repo-name from the Github repository, noughts-and-crosses.
+- select 'Search' and it will be linked automatically.
+- click the "Connect" button. 
+- now "Enable Automatic Deploys"
+- now on the top bar select "Settings"
+- look for "Add Buildpack" and select python first, press "Save changes" then repeat the process again and select nodejs in this  exact order.
+- now click on "Personal" on the top left corner.
+- click on noughts-and-crosses-ag 
+- click "Open App" on the top right corner.
+- the project is now deployed.
+
+<br><br>
 
 ## <a name="bugs">7. Bugs</a>
 ### Known Bugs
