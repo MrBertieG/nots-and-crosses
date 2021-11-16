@@ -7,7 +7,7 @@ colorama.init(autoreset=True)
 board = [' ' for x in range(10)]
 
 
-# Demonstration Board displayiong position layout
+# Demonstration Board displaying position layout
 demo_board = """
    |   |
  1 | 2 | 3
@@ -80,7 +80,8 @@ def insert_letter(letter, pos):
 def space_is_free(pos):
     """
     Checks if the space is availabe to use.
-    If not equal to empty it will return False
+    If it's not equal to empty it will return
+    False
     """
     return board[pos] == ' '
 
@@ -108,8 +109,8 @@ def print_board(board):
 def is_winner(board, letter):
     """
     Establishes the winning combimnations on the board.
-    It makes the two parameters board and letterand
-    it will go through each combinatiomn.
+    It makes the two parameters board and letter and
+    it will go through each combination.
     """
     if (board[7] == letter and board[8] == letter and board[9] == letter):
         return True
@@ -132,8 +133,8 @@ def is_winner(board, letter):
 def player_move():
     """
     This is the player's move input. If the player's choice is within
-    the parameters 1 to 9 & the space is available it will insert it
-    on the board. If the player inoputs 'Q' the game will terminate.
+    the parameters 1 to 9 & the space is available, it will insert it
+    on the board. If the player inputs 'Q' the game will terminate.
     """
     run = True
     while run:
@@ -159,14 +160,14 @@ def player_move():
                 print(game_over)
                 quit()
             else:
-                print(Fore.RED + 'Please type a number!')
+                print(Fore.RED + 'Please type a number or \'Q\' to give up!')
 
 
 def comp_move():
     """
     This is the 'AI' function, where it checks for possible free corners.
     The for loop will iterate over the board parameter, appending a copy
-    of the string values in the original board to the duplicate board.
+    of the string value in the original board to the duplicated board.
     """
     # Creates a list of possible winning moves
     possible_moves = [x for x, letter in enumerate(board)
@@ -213,7 +214,7 @@ def comp_move():
 
 def select_random(li):
     """
-    Random Function will select a position randomly,
+    This function will select a position randomly,
     based on the availability.
     """
     ln = len(li)
@@ -223,7 +224,7 @@ def select_random(li):
 
 def is_board_full(board):
     """
-    Check to see if the board has one or more spaces taken.
+    Checks to see if the board has one or more spaces taken.
     If so it will return False.
     """
     if board.count(' ') > 1:
@@ -325,7 +326,7 @@ print(Fore.YELLOW + introduction_message)
 print(Fore.YELLOW + demo_board)
 
 
-# The while loop allows th game to run.
+# The while loop allows the game to run.
 while True:
 
     while True:
