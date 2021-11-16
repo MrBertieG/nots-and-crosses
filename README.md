@@ -232,13 +232,28 @@ These are the steps I took for the deployment:
 
 <br><br>
 
+[Top of the page](#top)
+
 ## <a name="bugs">7. Bugs</a>
-### Known Bugs
+### Known Fixed Bugs
 
-Throughout the development process a few bugs have been encountered:
-- The game was not terminating when the board was filled with the Player being the last user to input a symbol. The game was still expecting the next input without being able to continue. Unless Q was pressed the game was stuck.
+Throughout the development process a few bugs have been encountered, however one ws paticularly challenging to solve:
 
+Problem:<br>
+The game was not terminating when the board was filled with the Player being the last user to input a symbol. The game was still expecting the next input without being able to continue as the board was full. Unless Q was pressed the game was stuck with no outcome.<br>
+
+Solution:<br>
 The solution was to enter a break statement when the board has been filled and draw the conclusion if it was a win, loose or tie.
 
+### Existing Bugs
+
+Althought there are no existing known bugs, one thing is to be mentioned. If the BOT starts first, it is impossible to win the game. The reason behind this is because the BOT will aways choose any random corners when starting first. This is a great strategy to win however the best outcome for the HUMAN is a tie.
+
+Perhaps this could have been solved by introducing an element of difficulty selection at the begining of the game for the user to choose. Beginner or Advanced. In the Beginner mode the computer will select anything but the corners, allowing for a chance of winning. In the Advanced mode, the computer will have chosen a position completly random leaving the corner option in as well.
+
+I have come to the realisation of this when the game was fully developed. If more time was allowed I would have added this feature in as well.
+<br><br>
+
+[Top of the page](#top)
 
 ## <a name="deployment">8. Credits</a>
