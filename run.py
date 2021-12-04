@@ -263,7 +263,7 @@ def main():
                     print('BOT placed an \'O\' in position', move, ':')
                     print_board(board)
             else:
-                print(Fore.GOLD + 'You win HUMAN!')
+                print(Fore.YELLOW + 'You win HUMAN!')
                 print(Fore.YELLOW + won_message)
                 break
 
@@ -282,7 +282,7 @@ def main():
                     print('BOT placed an \'O\' in position', move, ':')
                     print_board(board)
             else:
-                print(Fore.GOLD + 'You win HUMAN!')
+                print(Fore.YELLOW + 'You win HUMAN!')
                 print(Fore.YELLOW + won_message)
                 break
 
