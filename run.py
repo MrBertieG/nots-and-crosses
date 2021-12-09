@@ -157,7 +157,7 @@ def player_move():
         except:
             # Pressing Q will terminate the game
             if move == 'q':
-                print(game_over)
+                print(Fore.RED + game_over)
                 quit()
             else:
                 print(Fore.RED + 'Please type a number or \'Q\' to give up!')
